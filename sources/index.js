@@ -13,22 +13,22 @@ const {
   Routes,
 } = require("discord.js");
 
-const commands = [];
 // Grab all the command files from the commands directory you created earlier
+const commands = [];
 const commandFiles_deploy = fs
-  .readdirSync("./sources/commands")
+  .readdirSync("./commands")
   .filter((file) => file.endsWith(".js"));
 
 // Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
 for (const file of commandFiles_deploy) {
-  const command = require(`./sources/commands/${file}`);
+  const command = require(`./commands/${file}`);
   commands.push(command.data.toJSON());
 }
 
 // Construct and prepare an instance of the REST module
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
-// and deploy your commands!
+// And deploy your commands!
 (async () => {
   try {
     console.log(
@@ -63,7 +63,7 @@ client.once(Events.ClientReady, (c) => {
 });
 
 client.commands = new Collection();
-const commandsPath = path.join(__dirname, "sources", "commands");
+const commandsPath = path.join(__dirname,"commands");
 const commandFiles = fs
   .readdirSync(commandsPath)
   .filter((file) => file.endsWith(".js"));

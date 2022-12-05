@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  discordbot_cer:
+    build: ./sources
+    container_name: "DISCORDBOT_CER"
+    restart: "unless-stopped"
+    environment:
+      DISCORD_TOKEN: "${DISCORD_TOKEN}"
+      clientId: "${clientId}"
+      guildId: "${guildId}"
+      DATABASE_URL: "${DATABASE_URL}"
+networks:
+  internet: {}
+  no-internet:
+    internal: true
