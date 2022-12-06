@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const {getRedisClient} = require( "./functions/redis/RedisCommands");
 
 // Require the necessary discord.js classes
 const {
@@ -63,7 +64,7 @@ client.once(Events.ClientReady, (c) => {
 });
 
 client.commands = new Collection();
-const commandsPath = path.join(__dirname,"commands");
+const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs
   .readdirSync(commandsPath)
   .filter((file) => file.endsWith(".js"));
@@ -102,7 +103,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-//Connect to MongoDB 
+// Log in to Discord with your client's token
+client.login(process.env.DISCORD_TOKEN);
+
+//Connect to MongoDB
 mongoose
   .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
@@ -110,11 +114,11 @@ mongoose
     dbName: "EmptyRooms",
   })
   .then(() => {
-    console.log("Database Connected");
+    console.log("MongoDB Connected");
   })
   .catch((error) => {
     console.log(error);
   });
 
-// Log in to Discord with your client's token
-client.login(process.env.DISCORD_TOKEN);
+//Connect to Redis
+getRedisClient();

@@ -5,7 +5,7 @@ const {
   FindSameString,
   FindFreeRoomsForSlotExcludedAllDay,
   FindDataByDate,
-} = require("../server/controllers/RoomController");
+} = require("../functions/rooms/RoomController");
 
 module.exports = {
   data: new SlashCommandBuilder()

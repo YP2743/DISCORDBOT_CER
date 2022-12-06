@@ -3,6 +3,7 @@ const UsableRooms = require("./UsableRoomsList");
 const Date_Array = require("./Date_Array");
 const Month_Array = require("./Month_Array");
 const February_Date = require("./February_Date");
+const { cacheValueWithEx, getCache } = require("../redis/RedisCommands");
 
 async function FindDataByDate(date_data, month_data, year_data) {
   try {
@@ -20,7 +21,14 @@ async function FindDataByDate(date_data, month_data, year_data) {
       month_data < 10 ? "0" + month_data : month_data
     }-${date_data < 10 ? "0" + date_data : date_data}`;
     let regex = new RegExp(Date_Format, "i");
-    return data = await Room.find({ Date: regex });
+    let redis_data = await getCache(Date_Format);
+    if (redis_data !== null) {
+      return JSON.parse(redis_data);
+    } else {
+      let data = await Room.find({ Date: regex });
+      await cacheValueWithEx(Date_Format, JSON.stringify(data), 86400);
+      return data;
+    }
   } catch (error) {
     console.log(error);
   }
