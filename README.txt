@@ -6,3 +6,5 @@ Run Docker Compose:
     clientId = 
     guildId = 
     DATABASE_URL = 
+    REDIS_PASSWORD = 
+    REDIS_PORT = 

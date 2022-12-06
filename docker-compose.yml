@@ -9,7 +9,25 @@ services:
       clientId: "${clientId}"
       guildId: "${guildId}"
       DATABASE_URL: "${DATABASE_URL}"
+      REDIS_URL: "redis://:${REDIS_PASSWORD}@redis_server:${REDIS_PORT}"
+    networks:
+      - internet
+      - redis-cache
+
+  redis_server:
+    image: "redis:latest"
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    command: redis-server --requirepass ${REDIS_PASSWORD} --port ${REDIS_PORT}
+    volumes:
+      - redis_cache:/cache
+    networks:
+      - redis-cache
+
+volumes:
+  redis_cache:
+
 networks:
   internet: {}
-  no-internet:
+  redis-cache:
     internal: true

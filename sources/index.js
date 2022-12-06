@@ -2,7 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const {getRedisClient} = require( "./functions/redis/RedisCommands");
+const { getRedisClient } = require("./functions/redis/RedisCommands");
 
 // Require the necessary discord.js classes
 const {
