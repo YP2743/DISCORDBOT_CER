@@ -4,7 +4,7 @@ const Date_Array = require("./Date_Array");
 const Month_Array = require("./Month_Array");
 const February_Date = require("./February_Date");
 
-async function FindFreeRoomsByDate(date_data, month_data, year_data) {
+async function FindDataByDate(date_data, month_data, year_data) {
   try {
     if (
       !date_data ||
@@ -20,28 +20,18 @@ async function FindFreeRoomsByDate(date_data, month_data, year_data) {
       month_data < 10 ? "0" + month_data : month_data
     }-${date_data < 10 ? "0" + date_data : date_data}`;
     let regex = new RegExp(Date_Format, "i");
-    const data = await Room.find({ Date: regex });
-    let procesed_data = [];
-    for (let i = 0; i < data.length; i++) {
-      procesed_data.push(data[i].RoomNo);
-    }
-    return UsableRooms.filter((x) => !procesed_data.includes(x));
+    return data = await Room.find({ Date: regex });
   } catch (error) {
     console.log(error);
   }
 }
 
-async function FindDataByDate(date_data, month_data, year_data) {
-  try {
-    if (!date_data) return;
-    let Date_Format = `${year_data}-${
-      month_data < 10 ? "0" + month_data : month_data
-    }-${date_data < 10 ? "0" + date_data : date_data}`;
-    let regex = new RegExp(Date_Format, "i");
-    return (data = await Room.find({ Date: regex }));
-  } catch (error) {
-    console.log(error);
+function FindFreeRoomsByDate(data) {
+  let procesed_data = [];
+  for (let i = 0; i < data.length; i++) {
+    procesed_data.push(data[i].RoomNo);
   }
+  return UsableRooms.filter((x) => !procesed_data.includes(x));
 }
 
 function FindFreeRoomsForSlot(data, slot) {

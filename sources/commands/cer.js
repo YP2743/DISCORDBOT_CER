@@ -42,19 +42,27 @@ module.exports = {
     if (!month_data) month_data = temp_month;
     if (!year_data) year_data = temp_year;
     let UsedAllDay = await FindDataByDate(date_data, month_data, year_data);
-    let FreeRoomsAllDay = await FindFreeRoomsByDate(
-      date_data,
-      month_data,
-      year_data
-    );
+    let FreeRoomsAllDay = FindFreeRoomsByDate(UsedAllDay);
     let SLOT_1 = FindFreeRoomsForSlot(UsedAllDay, 1);
-    let SLOT_1_EAD = FindFreeRoomsForSlotExcludedAllDay(SLOT_1, FreeRoomsAllDay);
+    let SLOT_1_EAD = FindFreeRoomsForSlotExcludedAllDay(
+      SLOT_1,
+      FreeRoomsAllDay
+    );
     let SLOT_2 = FindFreeRoomsForSlot(UsedAllDay, 2);
-    let SLOT_2_EAD = FindFreeRoomsForSlotExcludedAllDay(SLOT_2, FreeRoomsAllDay);
+    let SLOT_2_EAD = FindFreeRoomsForSlotExcludedAllDay(
+      SLOT_2,
+      FreeRoomsAllDay
+    );
     let SLOT_3 = FindFreeRoomsForSlot(UsedAllDay, 3);
-    let SLOT_3_EAD = FindFreeRoomsForSlotExcludedAllDay(SLOT_3, FreeRoomsAllDay);
+    let SLOT_3_EAD = FindFreeRoomsForSlotExcludedAllDay(
+      SLOT_3,
+      FreeRoomsAllDay
+    );
     let SLOT_4 = FindFreeRoomsForSlot(UsedAllDay, 4);
-    let SLOT_4_EAD = FindFreeRoomsForSlotExcludedAllDay(SLOT_4, FreeRoomsAllDay);
+    let SLOT_4_EAD = FindFreeRoomsForSlotExcludedAllDay(
+      SLOT_4,
+      FreeRoomsAllDay
+    );
     let SLOT_1_2 = FindSameString(SLOT_1_EAD, SLOT_2_EAD);
     let SLOT_2_3 = FindSameString(SLOT_2_EAD, SLOT_3_EAD);
     let SLOT_3_4 = FindSameString(SLOT_3_EAD, SLOT_4_EAD);
