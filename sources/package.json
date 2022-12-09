@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jshint index.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "travis": "^0.1.1"
   },
   "devDependencies": {
-    "eslint": "^8.28.0"
+    "eslint": "^8.28.0",
+    "jshint": "^2.13.6"
   }
 }
