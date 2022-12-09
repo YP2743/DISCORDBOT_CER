@@ -3,9 +3,7 @@ node_js:
   - stable
 before_script:
     - cd ./sources
-before_install:
-  - npm install -g npm@latest
-install: 
-  - npm install
+    - npm install -g npm@latest
+    - npm install
 script: 
   - npm run test
