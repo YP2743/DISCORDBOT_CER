@@ -1,8 +1,9 @@
 language: node_js
 node_js:
-  - "v16.17.1"
-before_script:
-  - cd sources
+  - stable
+# before_script:
+#   - cd sources
+install: 
   - npm install
 script: 
   - npm run test
