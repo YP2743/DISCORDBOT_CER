@@ -111,7 +111,7 @@ mongoose
   .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: "EmptyRooms",
+    dbName: "ChienNgu",
   })
   .then(() => {
     console.log("MongoDB Connected");
@@ -122,4 +122,3 @@ mongoose
 
 //Connect to Redis
 getRedisClient();
-

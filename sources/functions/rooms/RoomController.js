@@ -11,7 +11,7 @@ async function FindDataByDate(date_data, month_data, year_data) {
       !date_data ||
       !Date_Array.includes(date_data) ||
       !Month_Array.includes(month_data.toString()) ||
-      (year_data.toString() !== "2022" && year_data.toString() !== "2023")
+      year_data.toString() !== "2023"
     )
       return;
     else if (month_data.toString() === "2") {

@@ -3,18 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "jshint index.js"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
     "mongoose": "^6.7.5",
-    "redis": "^4.5.1",
-    "travis": "^0.1.1",
-    "jshint": "^2.13.6"
+    "redis": "^4.5.1"
   },
   "devDependencies": {
     "eslint": "^8.28.0"

@@ -17,7 +17,7 @@ const RoomSchema = new mongoose.Schema({
         require : true
     }
 },
-    { collection: "FALL2022" }
+    { collection: "FPT" }
 )
 
 module.exports = mongoose.model("RoomModel", RoomSchema);
